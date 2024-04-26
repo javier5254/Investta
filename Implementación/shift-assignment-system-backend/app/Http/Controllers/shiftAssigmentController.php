@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Service;
 use App\Models\Shift;
 
-class shiftAssigment extends Controller
+class shiftAssigmentController extends Controller
 {
     public function index()
     {

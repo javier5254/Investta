@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\shiftAssigment;
+use App\Http\Controllers\shiftAssigmentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SuperAdminController;
 
@@ -10,18 +10,23 @@ Route::view('/', 'welcome');
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified', 'superadmin'])
     ->name('dashboard');
-Route::get('superadmin', [SuperAdminController::class, 'index'])
-    ->middleware(['auth', 'verified', 'superadmin'])
-    ->name('superadmin');
+
 Route::view('asesor', 'asesor')
     ->middleware(['auth', 'verified', 'asesor'])
     ->name('asesor');
+
 Route::view('specialist', 'specialist')
     ->middleware(['auth', 'verified', 'specialist'])
     ->name('specialist');
-Route::get('asignshift', [shiftAssigment::class, 'index'])
+
+Route::get('superadmin', [SuperAdminController::class, 'index'])
+    ->middleware(['auth', 'verified', 'superadmin'])
+    ->name('superadmin');
+
+Route::get('asignshift', [shiftAssigmentController::class, 'index'])
     ->name('asignshift');
-Route::get('visualizationshift', [shiftAssigment::class, 'show'])
+
+Route::get('visualizationshift', [shiftAssigmentController::class, 'show'])
     ->name('visualizationshift');
 
 Route::middleware('auth')->group(function () {
